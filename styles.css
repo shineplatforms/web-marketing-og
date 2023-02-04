@@ -27,7 +27,7 @@
   --color-grey-opaque: #f0f0f0;
   --color-white: #ffffff;
   --font-family-primary: 'Inter', sans-serif;
-  --font-family-reading: 'Lora', serif;
+  --font-family-reading: 'Crimson Pro', serif;
   --pane-padding-mobile: 40px 20px;
   --pane-padding-desktop: 65px 80px 80px;
   --drop-shadow-light: 0px 0px 4px rgba(0, 0, 0, 0.12);
@@ -38,6 +38,7 @@
   --color-primary: #c987fb;
   --color-secondary: #c987fb;
   --color-tertiary: #c987fb;
+  --svg-background: url("data:image/svg+xml,%3Csvg width='833' height='822' viewBox='0 0 833 822' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.1'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M584.745 205.039V-431H687.332V205.039H584.745Z' fill='%23F4693F'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M593.494 240.89L184.656 -246.344L263.243 -312.285L672.08 174.949L593.494 240.89Z' fill='%23F4693F'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M626.376 253.933L3.05506e-06 143.486L17.814 42.4581L644.19 152.905L626.376 253.933Z' fill='%23F4693F'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M663.671 246.073L112.846 564.093L61.5521 475.25L612.378 157.231L663.671 246.073Z' fill='%23F4693F'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M689.438 224.319L471.9 822L375.499 786.913L593.037 189.232L689.438 224.319Z' fill='%23F4693F'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M684.091 183.284L901.629 780.965L805.229 816.052L587.691 218.371L684.091 183.284Z' fill='%23F4693F'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M664.066 164.004L1214.89 482.023L1163.6 570.866L612.772 252.847L664.066 164.004Z' fill='%23F4693F'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M625.468 151.347L1251.84 40.8996L1269.66 141.928L643.282 252.375L625.468 151.347Z' fill='%23F4693F'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M597.934 169.079L1006.77 -318.154L1085.36 -252.213L676.52 235.021L597.934 169.079Z' fill='%23F4693F'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 /** RESET STYLES **/
@@ -287,8 +288,16 @@ body {
 /** SHINE STYLES **/
 body {
   background-color: var(--main-background-color);
+  background-image: var(--svg-background);
+  background-position: top right;
+  background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
+}
+
+..container {
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 header {
@@ -310,10 +319,10 @@ main {
   }
   main input[type="email"] {
     border: 1px solid var(--color-black);
-    font-size: var(--font-size-base);
+    font-size: calc(var(--font-size-base) * 1.5);
     font-family: var(--font-family-primary);
-    line-height: calc(var(--line-height-base) * 1.125);
-    padding: calc(var(--grid-base) * 4);
+    line-height: var(--line-height-base);
+    padding: calc(var(--grid-base) * 4) calc(var(--grid-base) * 6);
     width: 100%;
     margin-bottom: calc(var(--grid-base) * 2);
   }
@@ -321,12 +330,13 @@ main {
     border: 0;
     background-color: var(--color-primary);
     font-family: var(--font-family-primary);
-    font-size: calc(var(--font-size-base) * 1.125);
+    font-size: calc(var(--font-size-base) * 1.5);
     font-weight: 700;
     line-height: var(--line-height-base);
-    padding: calc(var(--grid-base) * 2) calc(var(--grid-base) * 4);
+    padding: calc(var(--grid-base) * 4) calc(var(--grid-base) * 6);
     width: 100%;
     color: var(--color-white);
+    cursor: pointer;
   }
     main button[type="submit"] svg {
       display: inline-block;
@@ -336,19 +346,20 @@ main {
 
 @media screen and (min-width: 768px) {
   header {
-    padding: calc(var(--grid-base) * 18) calc(var(--grid-base) * 20);
     text-align: left;
+    padding: calc(var(--grid-base) * 14) calc(var(--grid-base) * 12);
   }
   main {
-    padding: calc(var(--grid-base) * 5) calc(var(--grid-base) * 20);
     text-align: left;
+    padding: calc(var(--grid-base) * 10) calc(var(--grid-base) * 12);
   }
     main h1 {
-      font-size: calc(var(--font-size-base) * 3);
+      font-size: calc(var(--font-size-base) * 4);
       margin-bottom: calc(var(--grid-base) * 6);
     } 
     main p {
-      font-size: calc(var(--font-size-base) * 1.25);
+      font-size: calc(var(--font-size-base) * 2.5);
+      line-height: calc(var(--line-height-base) * 0.75);
       margin-bottom: calc(var(--grid-base) * 12);
     }
 
@@ -367,25 +378,25 @@ main {
     main form > div {
       flex: 0 0 100%;
       margin-top: calc(var(--grid-base) * 2);
+      font-size: calc(var(--font-size-base) * 1.5);
     }
 }
 
 @media screen and (min-width: 1024px) {
   header {
-
+    padding: calc(var(--grid-base) * 16) calc(var(--grid-base) * 20);
   }
   main {
-
+    padding: calc(var(--grid-base) * 16) calc(var(--grid-base) * 20) calc(var(--grid-base) * 6);
   }
     main h1 { 
       font-size: calc(var(--font-size-base) * 7);
     }
     main p {
-      font-size: calc(var(--font-size-base) * 3);
-      line-height: var(--line-height-base);
+      font-size: calc(var(--font-size-base) * 4);
       max-width: 850px;
     }
     main form {
-      max-width: 675px;
+      max-width: 720px;
     }
 }
