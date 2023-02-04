@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shine Systems, Inc.</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Inter:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <header>
+      <img src="logo.svg" alt="Shine" />
+    </header>
+    <main>
+      <h1>A better way to host</h1>
+      <p>The new standard in managing your property and delighting your guests. Coming soon.</p>
+      <form id="my-form" action="https://formspree.io/f/xqkoeooa" method="POST" >
+        <input type="email" name="email" placeholder="Enter email" />
+        <button type="submit" id="my-form-button">Get updates &rarr;</button>
+        <div id="my-form-status"></div>
+      </form>
+    </main>
+
+    <script>
+      var form = document.getElementById("my-form");
+      
+      async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("my-form-status");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            status.innerHTML = "Thanks for your submission!";
+            form.reset()
+          } else {
+            response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+              } else {
+                status.innerHTML = "Oops! There was a problem submitting your form"
+              }
+            })
+          }
+        }).catch(error => {
+          status.innerHTML = "Oops! There was a problem submitting your form"
+        });
+      }
+      form.addEventListener("submit", handleSubmit)
+  </script>
+  </body>
+</html>
+
