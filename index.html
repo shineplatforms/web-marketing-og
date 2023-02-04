@@ -4,30 +4,36 @@
     <title>Shine Systems, Inc.</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Inter:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Inter:wght@400;700&display=swap">
     <link rel="stylesheet" href="styles.css">
   </head>
 
   <body>
     <header>
-      <img src="logo.svg" alt="Shine" />
+      <img src="logo-shine.png" alt="Shine" />
     </header>
     <main>
       <h1>A better way to host</h1>
       <p>The new standard in managing your property and delighting your guests. Coming soon.</p>
-      <form id="my-form" action="https://formspree.io/f/xqkoeooa" method="POST" >
+      <form id="initial-form" action="https://formspree.io/f/xqkoeooa" method="POST" >
         <input type="email" name="email" placeholder="Enter email" />
-        <button type="submit" id="my-form-button">Get updates &rarr;</button>
-        <div id="my-form-status"></div>
+        <button type="submit">
+          Get updates 
+          <svg width="28" height="26" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 13H24.5" stroke="white" stroke-width="3" stroke-linecap="square" stroke-linejoin="round"/>
+            <path d="M16.1667 3L26.1667 13L16.1667 23" stroke="white" stroke-width="3" stroke-linecap="square" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div id="form-status"></div>
       </form>
     </main>
 
     <script>
-      var form = document.getElementById("my-form");
+      var form = document.getElementById("initial-form");
       
       async function handleSubmit(event) {
         event.preventDefault();
-        var status = document.getElementById("my-form-status");
+        var status = document.getElementById("form-status");
         var data = new FormData(event.target);
         fetch(event.target.action, {
           method: form.method,
