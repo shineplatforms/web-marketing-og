@@ -295,8 +295,8 @@ body {
   height: 100vh;
 }
 
-..container {
-  max-width: 1440px;
+.container {
+  max-width: 1920px;
   margin: 0 auto;
 }
 
@@ -314,7 +314,8 @@ main {
     margin-bottom: calc(var(--grid-base) * 4);
   }
   main p {
-    font-size: var(--font-size-base);
+    font-size: calc(var(--font-size-base) * 1.25);
+      line-height: calc(var(--line-height-base) * 0.75);
     margin-bottom: calc(var(--grid-base) * 8);
   }
   main input[type="email"] {
@@ -359,7 +360,6 @@ main {
     } 
     main p {
       font-size: calc(var(--font-size-base) * 2.5);
-      line-height: calc(var(--line-height-base) * 0.75);
       margin-bottom: calc(var(--grid-base) * 12);
     }
 
